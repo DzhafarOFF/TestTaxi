@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DzhafarOFF/TestTaxi#readme",
   "devDependencies": {
+    "@types/mapbox-gl": "^1.11.1",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
@@ -29,7 +30,9 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
     "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
     "ts-loader": "^8.0.1",
     "typescript": "^3.9.7",
     "webpack": "^4.43.0",
@@ -38,6 +41,7 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "mapbox-gl": "^1.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

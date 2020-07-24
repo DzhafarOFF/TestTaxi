@@ -27,9 +27,8 @@ const clientConfig = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.scss$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-				exclude: /node_modules/,
+				test: /\.(s*)css$/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],
 	},
@@ -38,7 +37,7 @@ const clientConfig = {
 		    template: "./src/index.html",
 		    filename: "./index.html"
 		}),
-		new MiniCssExtractPlugin({ filename: 'static/main.css' }),
+		// new MiniCssExtractPlugin({ filename: 'static/main.css' }),
 	],
 };
 

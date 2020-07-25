@@ -1,0 +1,13 @@
+.autocomplete {
+	&-option{
+		border: 1px solid grey;
+	}
+	&-text{
+		width: 100%;
+	}
+	&-list{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}

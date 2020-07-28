@@ -42,6 +42,7 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "@turf/turf": "^5.1.6",
     "mapbox-gl": "^1.11.1",
     "opencage-api-client": "^0.7.1",
     "react": "^16.13.1",

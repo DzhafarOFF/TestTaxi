@@ -5,13 +5,15 @@ import { SearchPending } from '../actions/searchPending';
 import { SearchState } from '../typings/AppTypes';
 import { SearchSuccess } from '../actions/searchSuccess';
 import { SelectOption } from '../actions/selectOption';
+import { SetInput } from '../actions/setInputValue';
 
-type Actions = SearchError | SearchPending | SearchSuccess | SelectOption;
+type Actions = SearchError | SearchPending | SearchSuccess | SelectOption | SetInput;
 
 const initialState: SearchState = {
 	searchResults: [],
 	selectedOption: null,
 	pending: false,
+	inputValue: '',
 };
 export const searchReducer: Reducer<SearchState, Actions> = (state = initialState, action) => {
 	switch (action.type) {
@@ -30,12 +32,19 @@ export const searchReducer: Reducer<SearchState, Actions> = (state = initialStat
 			return {
 				...state,
 				searchResults: action.payload,
-				pending: true,
+				pending: false,
 			};
 		case ActionTypes.SELECT_OPTION:
 			return {
+				...state,
 				searchResults: [],
 				selectedOption: action.payload,
+				pending: false,
+			};
+		case ActionTypes.SET_INPUT:
+			return {
+				...state,
+				inputValue: action.payload,
 				pending: true,
 			};
 		default:

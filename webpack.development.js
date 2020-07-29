@@ -8,5 +8,6 @@ module.exports = merge(common, {
 		historyApiFallback: true,
 		contentBase: './',
 		hot: true,
+		open: true
 	},
 });

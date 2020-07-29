@@ -10,3 +10,5 @@ React SPA for make taxi order with interactive map.
 
 ### Start development mode
 `npm run dev`
+
+## TODO: Fetch errors handling

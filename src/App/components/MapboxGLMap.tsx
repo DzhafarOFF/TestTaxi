@@ -2,10 +2,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapboxGLMap.scss';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { removeMarkers, setMarker } from '../../utils/setMarker';
 import { AppState } from '../../typings/AppTypes';
 import { makeSearch } from '../../actions/thunkActions/makeSearch';
 import mapboxgl from 'mapbox-gl';
-import { setMarker } from '../../utils/setMarker';
 
 interface State {
 	lng: number
@@ -28,7 +28,7 @@ const typedSelectorHook: TypedUseSelectorHook<AppState> = useSelector;
 const MapboxGLMap: React.FC = (): ReactElement => {
 	const [mapState, setMapState] = useState<mapboxgl.Map>();
 	const mapContainer = useRef(null);
-	const store = typedSelectorHook(appStore => ({ search: appStore.search }));
+	const store = typedSelectorHook(appStore => ({ search: appStore.search , form: appStore.form }));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -41,13 +41,12 @@ const MapboxGLMap: React.FC = (): ReactElement => {
 			});
 
 			map.on('load', () => {
-				// eslint-disable-next-line no-console
-				console.log('load');
 				map.on('click', (e: mapboxgl.MapMouseEvent): void => {
 					const [lng, lat] = [e.lngLat.lng, e.lngLat.lat];
 					const url = `https://api.opencagedata.com/geocode/v1/geojson?q=${lat}%2C+${lng}&key=${API_KEY}&pretty=1`;
 					const markerColor = '#F9F871';
 					dispatch(makeSearch(url));
+					removeMarkers();
 					setMarker(map, e.lngLat, markerColor);
 					setMapState(map);
 				});
@@ -66,11 +65,23 @@ const MapboxGLMap: React.FC = (): ReactElement => {
 			if (store.search.selectedOption && store.search.selectedOption.geometry.type === 'Point') {
 				const [lng, lat] = store.search.selectedOption.geometry.coordinates;
 				const markerColor = '#F9F871';
+				removeMarkers();
 				setMarker(mapState, [lng, lat], markerColor);
+				mapState.flyTo({ center: [lng, lat] });
 			}
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [setMarker, store.search.selectedOption]);
+	}, [mapState, store.search.selectedOption]);
+	useEffect(() => {
+		if (mapState) {
+			if (store.form.crews) {
+				store.form.crews.forEach(crew => {
+					const { lon, lat } = crew;
+					const markerColor = '#00C896';
+					setMarker(mapState, [lon, lat], markerColor);
+				});
+			}
+		}
+	}, [store.form.crews, mapState]);
 
 	return <div ref={mapContainer} id='map'></div>;
 };

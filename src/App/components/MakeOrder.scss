@@ -1,0 +1,21 @@
+@import '../themes/baseTheme.scss';
+
+.order__send{
+	margin-top: 40px;
+	align-self: center;
+	font-family: inherit;
+	font-size: 1.5rem;
+	padding: 10px;
+	width: 150px;
+	border-radius: 5px;
+	background-color: $make-order-color;
+	border: 0;
+	box-shadow: 0 0 1px $border-color;
+	transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.order__send:hover:enabled, .order__send:focus:enabled{
+	box-shadow: $small-shadow;
+	background-color: lighten($color: $make-order-color, $amount: 3);
+	@include pointer;
+}

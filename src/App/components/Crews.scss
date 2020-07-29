@@ -1,0 +1,36 @@
+@import '../themes/baseTheme.scss';
+.crews {
+	margin-top: $base-padding;
+	@include media-min-max($phone-min, $base-width){
+		padding: 0;
+	}
+	&__wrapper{
+		@include media-min($tablet-max + 1px){
+			margin-left: $base-padding;
+		}
+	}
+	&__item{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-shadow: $small-shadow;
+		border-radius: $crew-border-radius;
+		width: 400px;
+		padding: 0 $base-padding / 2;
+		transition: background-color 0.1s ease-out;
+		&-image {
+			width: 50px;
+			height: 50px;
+		}
+		@include media-min-max($phone-min, $base-width){
+			width: 300px;
+		}
+	}
+	&__item:hover{
+		@include pointer;
+		background-color: $make-order-color;
+	}
+	&__item + &__item{
+		margin-top: $base-padding / 2;
+	}
+}

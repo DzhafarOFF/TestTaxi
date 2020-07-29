@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {
 	order: FakePostOrderResponseBody
 };
-const OrderInfo: React.FC<Props> = (props: Props) => <div>
+const OrderInfo: React.FC<Props> = (props: Props) => <div className='order__info'>
 	<h2>{'Ваша машина в пути'}</h2>
 	<p>{`Номер заказа: ${props.order.data.order_id}` }</p>
 </div>;

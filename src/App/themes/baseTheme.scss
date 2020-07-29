@@ -1,0 +1,27 @@
+$text-color: #1c0b19;
+$make-order-color: #00C896;
+$border-color: #1c0b19;
+$primary-background-color: white;
+$secondary-background-color: #EFEFDC;
+$border-default: 1px solid $border-color;
+$base-padding: 20px;
+$base-width: 500px;
+$font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+$small-shadow: 0 0 3px $border-color;
+$crew-border-radius: 5px;
+$tablet-min: 654px;
+$tablet-max: 1024px;
+$phone-min: 365px;
+@mixin pointer {
+	cursor: pointer;
+};
+@mixin media-min-max($min, $max) {
+	@media (min-width: $min) and (max-width: $max){
+		@content
+	};
+};
+@mixin media-min($min) {
+	@media (min-width: $min) {
+		@content
+	};
+};

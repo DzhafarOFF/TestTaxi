@@ -1,3 +1,4 @@
+import './MakeOrder.scss';
 import React, { useCallback } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../typings/AppTypes';
@@ -16,7 +17,7 @@ const MakeOrder: React.FC = () => {
 		}
 	},[dispatch, store.form.selectedCrew, store.search.selectedOption]);
 
-	return <button disabled={isDisabled} onClick={handleCLick}>{'Заказать'}</button>;
+	return <button className='order__send' disabled={isDisabled} onClick={handleCLick}>{'Заказать'}</button>;
 };
 
 export default MakeOrder;

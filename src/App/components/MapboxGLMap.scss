@@ -12,4 +12,7 @@
 	@include media-min-max($phone-min, $base-width - 1px){
 		width: $base-width - 200px;
 	}
+	@include media-min-max($phone-min-old, $phone-min - 1px){
+		width: $base-width - 250px;
+	}
 }

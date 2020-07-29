@@ -12,6 +12,7 @@ $crew-border-radius: 5px;
 $tablet-min: 654px;
 $tablet-max: 1024px;
 $phone-min: 365px;
+$phone-min-old: 320px;
 @mixin pointer {
 	cursor: pointer;
 };

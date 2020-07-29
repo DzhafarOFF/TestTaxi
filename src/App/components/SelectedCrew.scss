@@ -2,12 +2,12 @@
 .order__selected-crew{
 	display: flex;
 	align-items: center;
-	@include media-min-max($phone-min, $base-width + 100px){
+	@include media-min-max($phone-min-old, $base-width + 100px){
 		flex-direction: column;
 	}
 	h2 {
 		margin-right: $base-padding;
-		@include media-min-max($phone-min, $base-width + 100px){
+		@include media-min-max($phone-min-old, $base-width + 100px){
 			margin: $base-padding 0;
 		}
 	}
@@ -21,8 +21,12 @@
 			margin: $base-padding 0;
 			height: 110px;
 		}
+		@include media-min-max($phone-min-old, $phone-min - 1px){
+			width: 250px;
+		}
+		
 		h2 {
-			@include media-min-max($phone-min, $base-width + 100px){
+			@include media-min-max($phone-min-old, $base-width + 100px){
 				margin: $base-padding / 2 0;
 			}
 		}

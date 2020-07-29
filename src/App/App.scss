@@ -33,11 +33,11 @@ input {
 
 .main{
 	display: flex;
-	@include media-min-max($phone-min, $tablet-max){
+	@include media-min-max($phone-min-old, $tablet-max){
 		flex-direction: column;
 		align-items: center;
 	}
-	@include media-min-max($phone-min, $tablet-min){
+	@include media-min-max($phone-min-old, $tablet-min){
 		margin-top: $base-padding;
 	}
 	
@@ -45,7 +45,7 @@ input {
 
 .order-details{
 	height: 200px;
-	@include media-min-max($phone-min, $base-width + 100px){
+	@include media-min-max($phone-min-old, $base-width + 100px){
 		height: 300px;
 	}
 }

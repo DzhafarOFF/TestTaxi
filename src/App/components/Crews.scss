@@ -1,7 +1,7 @@
 @import '../themes/baseTheme.scss';
 .crews {
 	margin-top: $base-padding;
-	@include media-min-max($phone-min, $base-width){
+	@include media-min-max($phone-min-old, $base-width){
 		padding: 0;
 	}
 	&__wrapper{
@@ -25,6 +25,10 @@
 		@include media-min-max($phone-min, $base-width){
 			width: 300px;
 		}
+		@include media-min-max($phone-min-old, $phone-min - 1px){
+			width: 250px;
+		}
+		
 	}
 	&__item:hover{
 		@include pointer;

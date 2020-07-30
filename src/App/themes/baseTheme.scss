@@ -13,6 +13,7 @@ $tablet-min: 654px;
 $tablet-max: 1024px;
 $phone-min: 365px;
 $phone-min-old: 320px;
+$error-color: #944C4C;
 @mixin pointer {
 	cursor: pointer;
 };

@@ -3,6 +3,7 @@ import { FakePostRequestBody, createRequestBody } from '../../utils/fakeServer';
 import React, { SyntheticEvent, useCallback, useEffect, useRef } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../typings/AppTypes';
+import ErrorBadReuest from './ErrorBadRequest';
 import { getCrews } from '../../actions/thunkActions/getCrews';
 import { makeSearch } from '../../actions/thunkActions/makeSearch';
 import { selectCrew } from '../../actions/selectCrew';
@@ -59,6 +60,10 @@ const Input: React.FC = () => {
 			<h2>{'Откуда:'}</h2>
 			<div className='order__adress'>
 				<input className='order__autocomplete-text' value={store.search.inputValue} type="text" onChange={handleInput}/>
+				{
+					store.search.isBadRequest &&
+					<ErrorBadReuest />
+				}
 				{
 					store.search.searchResults
 					&& store.search.searchResults.length !== 0

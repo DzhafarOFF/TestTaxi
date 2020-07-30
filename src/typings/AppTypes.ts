@@ -5,6 +5,7 @@ export type SearchState = {
 	pending: boolean
 	selectedOption: GeoJSON.Feature | null
 	inputValue: string
+	isBadRequest: boolean
 };
 
 export type FormState = {

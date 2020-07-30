@@ -14,6 +14,7 @@ const initialState: SearchState = {
 	selectedOption: null,
 	pending: false,
 	inputValue: '',
+	isBadRequest: false,
 };
 export const searchReducer: Reducer<SearchState, Actions> = (state = initialState, action) => {
 	switch (action.type) {
@@ -22,17 +23,20 @@ export const searchReducer: Reducer<SearchState, Actions> = (state = initialStat
 				...state,
 				searchResults: [],
 				pending: false,
+				isBadRequest: true,
 			};
 		case ActionTypes.SEARCH_PENDING:
 			return {
 				...state,
 				pending: true,
+				isBadRequest: false,
 			};
 		case ActionTypes.SEARCH_SUCCESS:
 			return {
 				...state,
 				searchResults: action.payload,
 				pending: false,
+				isBadRequest: false,
 			};
 		case ActionTypes.SELECT_OPTION:
 			return {

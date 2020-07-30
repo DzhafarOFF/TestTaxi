@@ -1,0 +1,6 @@
+@import '../themes/baseTheme.scss';
+.error{
+	position: absolute;
+	font-size: 1.25rem;
+	color: $error-color;
+}

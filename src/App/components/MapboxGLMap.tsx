@@ -6,6 +6,9 @@ import { removeMarkers, setMarker } from '../../utils/setMarker';
 import { AppState } from '../../typings/AppTypes';
 import { makeSearch } from '../../actions/thunkActions/makeSearch';
 import mapboxgl from 'mapbox-gl';
+import { selectCrew } from '../../actions/selectCrew';
+import { selectOption } from '../../actions/selectOption';
+import { setCrews } from '../../actions/setCrews';
 
 interface State {
 	lng: number
@@ -45,8 +48,11 @@ const MapboxGLMap: React.FC = (): ReactElement => {
 					const [lng, lat] = [e.lngLat.lng, e.lngLat.lat];
 					const url = `https://api.opencagedata.com/geocode/v1/geojson?q=${lat}%2C+${lng}&key=${API_KEY}&pretty=1`;
 					const markerColor = '#F9F871';
-					dispatch(makeSearch(url));
 					removeMarkers();
+					dispatch(selectOption(null));
+					dispatch(makeSearch(url));
+					dispatch(setCrews(null));
+					dispatch(selectCrew(null));
 					setMarker(map, e.lngLat, markerColor);
 					setMapState(map);
 				});
@@ -81,7 +87,8 @@ const MapboxGLMap: React.FC = (): ReactElement => {
 				});
 			}
 		}
-	}, [store.form.crews, mapState]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [store.form.crews]);
 
 	return <div ref={mapContainer} id='map'></div>;
 };

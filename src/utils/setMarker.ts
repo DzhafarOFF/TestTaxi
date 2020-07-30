@@ -2,8 +2,10 @@ import mapboxgl, { LngLatLike } from 'mapbox-gl';
 
 export const removeMarkers = (): void => {
 	const markers = document.getElementsByClassName('mapboxgl-marker');
-	for (const marker of markers) {
-		marker.remove();
+	if (markers.length !== 0) {
+		while (markers.length > 0) {
+			markers[0].remove();
+		}
 	}
 };
 
